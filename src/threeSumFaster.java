@@ -8,10 +8,10 @@ public class threeSumFaster {
     static ThreadMXBean bean = ManagementFactory.getThreadMXBean( );
 
     /* define constants */
-    static long MAXVALUE =  1000000;
-    static long MINVALUE = -1000000;
-    static int numberOfTrials = 10;
-    static int MAXINPUTSIZE  = (int) Math.pow(2,10); // 2^29 size start with smaller first maybe 2^10
+    static long MAXVALUE =  30;
+    static long MINVALUE = -30;
+    static int numberOfTrials = 1;
+    static int MAXINPUTSIZE  = (int) Math.pow(2,5); // 2^29 size start with smaller first maybe 2^10
     static int MININPUTSIZE  =  1;
     static int cnt = 0;
     // static int SIZEINCREMENT =  10000000; // not using this since we are doubling the size each time
@@ -63,6 +63,9 @@ public class threeSumFaster {
 
             long[] testList = createRandomIntegerList(inputSize);
 
+            // long[] testList = {-50,20,30};
+
+
             // Print array
             System.out.print(Arrays.toString(testList));
 
@@ -90,7 +93,7 @@ public class threeSumFaster {
 
                 //TrialStopwatch.start(); // *** uncomment this line if timing trials individually
                 /* run the function we're testing on the trial input */
-                count(testList);
+                cnt =count(testList);
 
                 // batchElapsedTime = batchElapsedTime + TrialStopwatch.elapsedTime(); // *** uncomment this line if timing trials individually
             }
@@ -101,7 +104,7 @@ public class threeSumFaster {
             resultsWriter.printf("%12d  %15.2f \n",inputSize, averageTimePerTrialInBatch); // might as well make the columns look nice
             resultsWriter.flush();
             System.out.println(" ....done.");
-            System.out.println("count: " + cnt);
+            System.out.println("Count: " + cnt);
         }
     }
 
@@ -124,7 +127,7 @@ public class threeSumFaster {
                 // If the found index is greater than j then a number was found
                 // and we can increment cnt.
                 if (k > j) {
-                    System.out.println(list[i] + " " + list[j] + " " + list[k]);
+                    //System.out.println(list[i] + " " + list[j] + " " + list[k]);
                     ++cnt;
                 }
             }
